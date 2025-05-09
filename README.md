@@ -1,7 +1,5 @@
 # Laravel From Scratch
 
----
-
 -   Routing, Request & Response
 -   MVC
 -   Database Migrations
