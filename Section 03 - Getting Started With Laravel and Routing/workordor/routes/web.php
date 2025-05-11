@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,22 +10,16 @@ Route::get('/jobs', function () {
     return '<h1>Available Jobs</h1>';
 })->name('jobs');
 
-Route::get('/test', function (Request $request) {
-    return [
-        'method' => $request->method(),
-        'url' => $request->url(),
-        'path' => $request->path(),
-        'fullUrl' => $request->fullUrl(),
-        'ip' => $request->ip(),
-        'userAgent' => $request->userAgent(),
-        'header' => $request->header(),
-    ];
+Route::get('/abq', function () {
+    return response(
+        'Representing the ABQ. What up biat**?! Leave at the tone.',
+        200
+    );
 });
 
-Route::get('/users', function (Request $request) {
-    // return $request->only(['name', 'age']);
-    // return $request->all();
-    // return $request->has('name'); // returns boolean
-    // return $request->input('test', 'Default Value');
-    return $request->except(['name']);
+Route::get('/zed', function () {
+    return response(
+        'Zed is dead baby',
+        404
+    );
 });
