@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,26 +11,18 @@ Route::get('/jobs', function () {
     return '<h1>Available Jobs</h1>';
 })->name('jobs');
 
-Route::get('/posts/{id}', function (string $id) {
-    return 'Post ' . $id;
+Route::get('/test', function (Request $request) {
+    return [
+        'method' => $request->method(),
+        'url' => $request->url(),
+        'path' => $request->path(),
+        'fullUrl' => $request->fullUrl(),
+        'ip' => $request->ip(),
+        'userAgent' => $request->userAgent(),
+        'header' => $request->header(),
+    ];
 });
 
-Route::get('/users/{id}', function (string $id) {
-    return 'User ' . $id;
-});
-
-// Route::get('/posts/{id}', function (string $id) {
-//     return 'Post ' . $id;
-// })->whereNumber('id');
-
-// Route::get('/posts/{id}', function (string $id) {
-//     return 'Post ' . $id;
-// })->where('id', '[a-zA-Z]+');
-
-// Route::get('/posts/{id}', function (string $id) {
-//     return 'Post ' . $id;
-// })->whereAlpha('id');
-
-Route::get('/posts/{id}/comments/{commentId}', function (string $id, string $commentId) {
-    return 'Post ' . $id . '<br> Comment ' . $commentId;
+Route::get('/users', function (Request $request) {
+    return $request->query('name');
 });
