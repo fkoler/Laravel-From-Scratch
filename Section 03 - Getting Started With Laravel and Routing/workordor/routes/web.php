@@ -24,5 +24,9 @@ Route::get('/test', function (Request $request) {
 });
 
 Route::get('/users', function (Request $request) {
-    return $request->query('name');
+    // return $request->only(['name', 'age']);
+    // return $request->all();
+    // return $request->has('name'); // returns boolean
+    // return $request->input('test', 'Default Value');
+    return $request->except(['name']);
 });
