@@ -7,5 +7,9 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    return view('jobs');
+    return view('jobs.index');
 })->name('jobs');
+
+Route::get('/jobs/create', function () {
+    return view('jobs.create');
+})->name('jobs.create');
