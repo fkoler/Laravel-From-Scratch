@@ -8,13 +8,12 @@
 </head>
 
 <body style="background-color: #0a0a0a; color: #EDEDEC; font-family: sans-serif">
-    <h1>Available Jobs</h1>
+    <h1><?= $title ?></h1>
 
     <ul>
-        <li>Web Developer</li>
-        <li>Software Engineer</li>
-        <li>Backend Developer</li>
-        <li>DevOps Engineer</li>
+        <?php foreach ($jobs as $job) : ?>
+            <li><?= htmlspecialchars($job, ENT_QUOTES, 'UTF-8') ?></li>
+        <?php endforeach; ?>
     </ul>
 </body>
 
