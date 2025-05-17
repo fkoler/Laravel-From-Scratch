@@ -10,11 +10,15 @@
 <body style="background-color: #0a0a0a; color: #EDEDEC; font-family: sans-serif">
     <h1>{{ $title }}</h1>
 
-    <ul>
-        @foreach ($jobs as $job)
-            <li>{{ $job }}</li>
-        @endforeach
-    </ul>
+    @if (!empty($jobs))
+        <ul>
+            @foreach ($jobs as $job)
+                <li>{{ $job }}</li>
+            @endforeach
+        </ul>
+    @else
+        <p>No Jobs Available</p>
+    @endif
 </body>
 
 </html>
