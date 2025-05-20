@@ -45,6 +45,12 @@ class JobController extends Controller
         return "Showing Job $id";
     }
 
+    /**
+     * Store a newly created job.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return string
+     */
     public function store(Request $request)
     {
         $title = $request->input('title');
