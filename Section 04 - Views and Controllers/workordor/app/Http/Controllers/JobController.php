@@ -23,6 +23,16 @@ class JobController extends Controller
 
         return view('jobs.index', compact('title', 'jobs'));
     }
+
+    /**
+     * Show the create form
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('jobs.create');
+    }
 }
 
 // php artisan make:controller JobController

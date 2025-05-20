@@ -9,6 +9,4 @@ Route::get('/', function () {
 
 Route::get('/jobs', [JobController::class, 'index']);
 
-Route::get('/jobs/create', function () {
-    return view('jobs.create');
-})->name('jobs.create');
+Route::get('/jobs/create', [JobController::class, 'create']);
