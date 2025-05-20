@@ -33,6 +33,25 @@ class JobController extends Controller
     {
         return view('jobs.create');
     }
+
+    /**
+     * Display the specified job
+     *
+     * @param string $id 
+     * @return string
+     */
+    public function show(string $id)
+    {
+        return "Showing Job $id";
+    }
+
+    public function store(Request $request)
+    {
+        $title = $request->input('title');
+        $description = $request->input('description');
+
+        return "Title: $title, Description: $description";
+    }
 }
 
 // php artisan make:controller JobController

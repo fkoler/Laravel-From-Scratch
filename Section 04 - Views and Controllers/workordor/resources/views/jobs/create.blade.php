@@ -9,6 +9,13 @@
 
 <body style="background-color: #0a0a0a; color: #EDEDEC; font-family: sans-serif">
     <h1>Create New Job</h1>
+
+    <form action="/jobs" method="POST">
+        <input type=text name="title" placeholder="title">
+        <input type=text name="description" placeholder="description">
+
+        <button type="submit">Submit</button>
+    </form>
 </body>
 
 </html>
