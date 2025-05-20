@@ -11,34 +11,8 @@
     <h1>{{ $title }}</h1>
 
     <ul>
-
         @forelse ($jobs as $job)
-            @if ($job === 'Backend Developer')
-                {{-- @break --}}
-                {{-- @continue --}}
-            @endif
-            {{-- <li>{{ $loop->index }} - {{ $job }}</li> --}}
-            {{-- <li>{{ $loop->iteration }} - {{ $job }}</li> --}}
-            {{-- <li>{{ $loop->remaining }} - {{ $job }}</li> --}}
-            {{-- <li>{{ $loop->count }} - {{ $job }}</li> --}}
-
-            {{-- @if ($loop->first)
-                <li>First - {{ $job }}</li>
-            @else
-                <li>{{ $job }}</li>
-            @endif --}}
-
-            {{-- @if ($loop->last)
-                <li>Last - {{ $job }}</li>
-            @else
-                <li>{{ $job }}</li>
-            @endif --}}
-
-            @if ($loop->even)
-                <li>Even - {{ $job }}</li>
-            @else
-                <li>Odd - {{ $job }}</li>
-            @endif
+            <li>{{ $job }}</li>
         @empty
             <p>No Jobs Available</p>
         @endforelse
