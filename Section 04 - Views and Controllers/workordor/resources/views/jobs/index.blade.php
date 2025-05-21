@@ -8,7 +8,7 @@
 </head>
 
 <body style="background-color: #0a0a0a; color: #EDEDEC; font-family: sans-serif">
-    <h1>{{ $title }}</h1>
+    <h1>Available Jobs</h1>
 
     <ul>
         @forelse ($jobs as $job)

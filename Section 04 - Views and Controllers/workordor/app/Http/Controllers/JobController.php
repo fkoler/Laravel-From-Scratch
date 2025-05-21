@@ -11,7 +11,14 @@ class JobController extends Controller
      */
     public function index()
     {
-        //
+        $jobs = [
+            'Web Developer',
+            'Software Engineer',
+            'Backend Developer',
+            'DevOps Engineer',
+        ];
+
+        return view('jobs.index', compact('jobs'));
     }
 
     /**
@@ -19,7 +26,7 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        return view('jobs.create');
     }
 
     /**
