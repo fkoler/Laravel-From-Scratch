@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Listings</title>
-</head>
+@section('title')
+    Available Jobs
+@endsection
 
-<body style="background-color: #0a0a0a; color: #EDEDEC; font-family: sans-serif">
+@section('content')
     <h1>Available Jobs</h1>
 
     <ul>
@@ -17,6 +14,4 @@
             <p>No Jobs Available</p>
         @endforelse
     </ul>
-</body>
-
-</html>
+@endsection
