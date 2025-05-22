@@ -4,18 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Listings</title>
+    <title>Wokordor | Find and list Jobs</title>
 </head>
 
 <body style="background-color: #0a0a0a; color: #EDEDEC; font-family: sans-serif">
-    <h1>Available Jobs</h1>
+    <x-header />
 
-    <ul>
-        <li>Web Developer</li>
-        <li>Software Engineer</li>
-        <li>Backend Developer</li>
-        <li>DevOps Engineer</li>
-    </ul>
+    <main class="container mx-auto p-4 mt-4">
+        {{ $slot }}
+    </main>
 </body>
 
 </html>
