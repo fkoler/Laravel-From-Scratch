@@ -8,9 +8,9 @@
         <nav class="hidden md:flex items-center space-x-4">
             <x-nav-link url="/jobs" :active="request()->is('jobs')">All Jobs</x-nav-link>
             <x-nav-link url="/jobs/saved" :active="request()->is('jobs/saved')">Saved Jobs</x-nav-link>
-            <x-nav-link url="/login" :active="request()->is('login')">Login</x-nav-link>
+            <x-nav-link url="/login" :active="request()->is('login')" icon="user">Login</x-nav-link>
             <x-nav-link url="/register" :active="request()->is('register')">Register</x-nav-link>
-            <x-nav-link url="/dashboard" :active="request()->is('dashboard')">Dashboard</x-nav-link>
+            <x-nav-link url="/dashboard" :active="request()->is('dashboard')" icon="gauge">Dashboard</x-nav-link>
             <a href="{{ url('/jobs/create') }}"
                 class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded hover:shadow-md transition duration-300">
                 <i class="fa fa-edit"></i> Create Job
