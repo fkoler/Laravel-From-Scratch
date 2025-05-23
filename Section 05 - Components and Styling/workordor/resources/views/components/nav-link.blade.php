@@ -1,7 +1,6 @@
-@php
-    echo $attributes;
-@endphp
+@props(['active' => false])
 
-<a {{ $attributes }}>
+<a {{ $attributes }} class="text-white hover:underline py-2 
+    {{ $active ? 'text-yellow-500 font-bold' : '' }}">
     {{ $slot }}
 </a>

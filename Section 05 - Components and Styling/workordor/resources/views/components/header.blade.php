@@ -5,7 +5,7 @@
             <a href="{{ url('/') }}">Workordor</a>
         </h1>
 
-        <x-nav-link href="{{ url('/home') }}" title="HomePage">Home</x-nav-link>
+        <x-nav-link href="{{ url('/home') }}" :active="true">Home</x-nav-link>
 
         <nav class="hidden md:flex items-center space-x-4">
             <a href="{{ url('/jobs') }}"
