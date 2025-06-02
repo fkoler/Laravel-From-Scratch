@@ -14,7 +14,7 @@
             <x-button-link url="/jobs/create" icon="edit">Create Job</x-button-link>
         </nav>
 
-        <button id="hamburger" class="text-white md:hidden flex items-center">
+        <button id="hamburger" class="text-white md:hidden flex items-center cursor-pointer">
             <i class="fa fa-bars text-2xl"></i>
         </button>
     </div>
