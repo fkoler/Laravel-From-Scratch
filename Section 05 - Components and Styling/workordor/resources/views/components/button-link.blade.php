@@ -5,9 +5,11 @@
     'hoverClass' => 'hover:bg-yellow-600',
     'textClass' => 'text-black',
     'styles' => 'px-4 py-2 rounded hover:shadow-md transition duration-300',
+    'block' => false,
 ])
 
-<a href="{{ $url }}" class="{{ $bgClass }} {{ $hoverClass }} {{ $textClass }} {{ $styles }}">
+<a href="{{ $url }}"
+    class="{{ $bgClass }} {{ $hoverClass }} {{ $textClass }} {{ $styles }} {{ $block ? 'block' : '' }}">
     @if ($icon)
         <i class="fa fa-{{ $icon }}"></i>
     @endif
