@@ -37,8 +37,15 @@ class UserFactory extends Factory
      */
     public function unverified(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'email_verified_at' => null,
         ]);
     }
 }
+
+// Using Factories:
+
+// \App\Models\User::factory()->create();
+// \App\Models\User::factory()->count(10)->create();
+// \App\Models\User::all();
+// \App\Models\User::factory()->unverified()->create();
