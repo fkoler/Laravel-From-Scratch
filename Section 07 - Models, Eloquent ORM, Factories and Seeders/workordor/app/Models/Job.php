@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+
 class Job extends Model
 {
+    use HasFactory;
+
     protected $table = 'job_listings';
 
     protected $fillable = [
@@ -28,7 +32,7 @@ class Job extends Model
         'company_description',
         'company_logo',
         'company_website',
-        'user_id',
+        'user_id'
     ];
 
     /**
