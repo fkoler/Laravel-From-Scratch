@@ -20,3 +20,4 @@ class RandomUserSeeder extends Seeder
 }
 
 // php artisan db:seed --class=RandomUserSeeder
+// php artisan make:seeder RandomUserSeeder
