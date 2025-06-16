@@ -27,7 +27,7 @@
         </li>
 
         <li class="mb-2">
-            <strong>Tags:</strong> {{ $job->tags }}
+            <strong>Tags:</strong> {{ ucwords(str_replace(',', ', ', $job->tags)) }}
         </li>
     </ul>
 
