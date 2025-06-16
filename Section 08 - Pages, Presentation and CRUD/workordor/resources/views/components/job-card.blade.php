@@ -2,7 +2,7 @@
 
 <div class="rounded-lg shadow-md bg-blue-900 text-white p-4">
     <div class="flex items-center space-between gap-4">
-        <img src="/images/logos/logo-algorix.png" alt="" class="w-14" />
+        <img src="/images/{{ $job->company_logo }}" alt="{{ $job->company_name }}" class="w-14" />
         <div>
             <h2 class="text-xl font-semibold">
                 {{ $job->title }}
