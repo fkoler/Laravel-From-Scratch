@@ -83,5 +83,24 @@
                 <div id="map"></div>
             </div>
         </section>
+
+        {{-- Sidebar --}}
+        <aside class="bg-blue-900 text-white rounded-lg shadow-md p-3">
+            <h3 class="text-xl text-center mb-4 font-bold">Company Info</h3>
+
+            <img src="/images/{{ $job->company_logo }}" alt="{{ $job->company_name }}"
+                class="w-full rounded-lg mb-4 m-auto" />
+
+            <h4 class="text-lg font-bold">{{ $job->company_name }}</h4>
+
+            <p class="text-gray-400 text-base my-3">{{ $job->company_description }}</p>
+
+            <a href="{{ $job->company_website }}" target="_blank"
+                class="text-indigo-200 hover:text-indigo-300 shadow-md">Visit Website</a>
+
+            <a href=""
+                class="mt-10 bg-blue-500 hover:bg-blue-600 text-white font-semibold w-full py-2 px-4 rounded-full flex items-center justify-center">
+                <i class="fas fa-bookmark mr-3"></i>Bookmark Listing</a>
+        </aside>
     </div>
 </x-layout>
