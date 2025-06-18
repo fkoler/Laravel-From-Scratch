@@ -18,33 +18,17 @@
                 <x-inputs.text type="text" id="title" name="title" label="Job Title"
                     placeholder="e.g. Web Developer" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="description">Job Description</label>
-                    <textarea cols="30" rows="7" id="description" name="description"
-                        class="w-full px-4 py-2 border rounded focus:outline-none
-                        @error('description')
-                            border-red-500                            
-                        @enderror"
-                        placeholder="We are seeking...">{{ old('description') }}</textarea>
-                    @error('description')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-inputs.text-area id="description" name="description" label="Job Description"
+                    placeholder="e.g. We are seeking..." />
 
                 <x-inputs.text type="text" id="salary" name="salary" label="Annual Salary"
                     placeholder="e.g. 101000" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="requirements">Requirements</label>
-                    <textarea id="requirements" name="requirements" class="w-full px-4 py-2 border rounded focus:outline-none"
-                        placeholder="Bachelor's degree..."></textarea>
-                </div>
+                <x-inputs.text-area id="requirements" name="requirements" label="Job Requirements"
+                    placeholder="e.g. Bachelor's degree..." />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="benefits">Benefits</label>
-                    <textarea id="benefits" name="benefits" class="w-full px-4 py-2 border rounded focus:outline-none"
-                        placeholder="Health insurance..."></textarea>
-                </div>
+                <x-inputs.text-area id="benefits" name="benefits" label="Job Benefits"
+                    placeholder="e.g. Health insurance..." rows="4" />
 
                 <x-inputs.text type="text" id="tags" name="tags" label="Tags (comma-separated)"
                     placeholder="e.g. webdev, javascript, php" />
@@ -107,13 +91,10 @@
                 </h2>
 
                 <x-inputs.text type="text" id="company_name" name="company_name" label="Company Name"
-                    placeholder="Company Name" />
+                    placeholder="Enter Company Name" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="company_description">Company Description</label>
-                    <textarea id="company_description" name="company_description"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="Company Description"></textarea>
-                </div>
+                <x-inputs.text-area id="company_description" name="company_description" label="Company Description"
+                    placeholder="Company Description" rows="4" />
 
                 <x-inputs.text type="text" id="company_website" name="company_website" label="Company Website"
                     placeholder="Enter website" />
