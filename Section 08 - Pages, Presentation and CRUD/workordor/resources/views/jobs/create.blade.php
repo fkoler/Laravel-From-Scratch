@@ -15,18 +15,8 @@
                     Job Info
                 </h2>
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="title">Job Title</label>
-                    <input id="title" type="text" name="title"
-                        class="w-full px-4 py-2 border rounded focus:outline-none 
-                        @error('title')
-                            border-red-500                            
-                        @enderror"
-                        placeholder="Web Developer" value="{{ old('title') }}" />
-                    @error('title')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-inputs.text type="text" id="title" name="title" label="Job Title"
+                    placeholder="e.g. Web Developer" />
 
                 <div class="mb-4">
                     <label class="block text-gray-300" for="description">Job Description</label>
@@ -41,11 +31,8 @@
                     @enderror
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="salary">Annual Salary</label>
-                    <input id="salary" type="text" name="salary"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="1059714" />
-                </div>
+                <x-inputs.text type="text" id="salary" name="salary" label="Annual Salary"
+                    placeholder="e.g. 101000" />
 
                 <div class="mb-4">
                     <label class="block text-gray-300" for="requirements">Requirements</label>
@@ -59,11 +46,8 @@
                         placeholder="Health insurance..."></textarea>
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="tags">Tags (comma-separated)</label>
-                    <input id="tags" type="text" name="tags"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="webdev, js, php" />
-                </div>
+                <x-inputs.text type="text" id="tags" name="tags" label="Tags (comma-separated)"
+                    placeholder="e.g. webdev, javascript, php" />
 
                 <div class="mb-4">
                     <label class="block text-gray-300" for="job_type">Job Type</label>
@@ -108,40 +92,22 @@
                     </select>
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="address">Address</label>
-                    <input id="address" type="text" name="address"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="123..." />
-                </div>
+                <x-inputs.text type="text" id="city" name="city" label="Address"
+                    placeholder="e.g. 629 King St. W" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="city">City</label>
-                    <input id="city" type="text" name="city"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="Toronto" />
-                </div>
+                <x-inputs.text type="text" id="city" name="city" label="City" placeholder="Toronto" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="state">State</label>
-                    <input id="state" type="text" name="state"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="ON" />
-                </div>
+                <x-inputs.text type="text" id="state" name="state" label="State" placeholder="ON" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="zipcode">ZIP Code</label>
-                    <input id="zipcode" type="text" name="zipcode"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="M5V 0G9" />
-                </div>
+                <x-inputs.text type="text" id="zipcode" name="zipcode" label="Zipcode" placeholder="M5V 0G9" />
 
                 {{-- Company Info --}}
                 <h2 class="text-2xl font-bold mb-6 text-center text-blue-200">
                     Company Info
                 </h2>
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="company_name">Company Name</label>
-                    <input id="company_name" type="text" name="company_name"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="Company name" />
-                </div>
+                <x-inputs.text type="text" id="company_name" name="company_name" label="Company Name"
+                    placeholder="Company Name" />
 
                 <div class="mb-4">
                     <label class="block text-gray-300" for="company_description">Company Description</label>
@@ -149,24 +115,14 @@
                         class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="Company Description"></textarea>
                 </div>
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="company_website">Company Website</label>
-                    <input id="company_website" type="text" name="company_website"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="Enter website" />
-                </div>
+                <x-inputs.text type="text" id="company_website" name="company_website" label="Company Website"
+                    placeholder="Enter website" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="contact_phone">Contact Phone</label>
-                    <input id="contact_phone" type="text" name="contact_phone"
-                        class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="Enter phone" />
-                </div>
+                <x-inputs.text type="text" id="contact_phone" name="contact_phone" label="Contact Phone"
+                    placeholder="Enter phone" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="contact_email">Contact Email</label>
-                    <input id="contact_email" type="email" name="contact_email"
-                        class="w-full px-4 py-2 border rounded focus:outline-none"
-                        placeholder="Email where you want to receive applications" />
-                </div>
+                <x-inputs.text type="email" id="contact_email" name="contact_email" label="Contact Email"
+                    placeholder="Email where you want to receive applications" />
 
                 <div class="mb-4">
                     <label class="block text-gray-300" for="company_logo">Company Logo</label>
