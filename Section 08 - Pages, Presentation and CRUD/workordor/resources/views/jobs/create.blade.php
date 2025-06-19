@@ -70,17 +70,7 @@
                 <x-inputs.text type="email" id="contact_email" name="contact_email" label="Contact Email"
                     placeholder="Email where you want to receive applications" />
 
-                <div class="mb-4">
-                    <label class="block text-gray-300" for="company_logo">Company Logo</label>
-                    <input id="company_logo" type="file" name="company_logo"
-                        class="text-gray-400 w-full px-4 py-2 border rounded focus:outline-none cursor-pointer
-                        @error('company_logo')
-                            border-red-500                            
-                        @enderror" />
-                    @error('company_logo')
-                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-inputs.file id="company_logo" name="company_logo" label="Company Logo" />
 
                 <button type="submit"
                     class="w-full bg-green-500 hover:bg-green-600 text-white font-bold px-4 py-2 my-3 rounded focus:outline-none cursor-pointer">Save</button>
