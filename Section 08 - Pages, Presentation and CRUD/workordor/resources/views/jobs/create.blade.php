@@ -17,7 +17,7 @@
                 <x-inputs.text-area id="description" name="description" label="Job Description"
                     placeholder="e.g. We are seeking..." />
 
-                <x-inputs.text type="text" id="salary" name="salary" label="Annual Salary"
+                <x-inputs.text type="number" id="salary" name="salary" label="Annual Salary"
                     placeholder="e.g. 101000" />
 
                 <x-inputs.text-area id="requirements" name="requirements" label="Job Requirements"
@@ -43,7 +43,7 @@
 
                 <x-inputs.select id="remote" name="remote" label="Remote" :options="[0 => 'No', 1 => 'Yes']" />
 
-                <x-inputs.text type="text" id="city" name="city" label="Address"
+                <x-inputs.text type="text" id="address" name="address" label="Address"
                     placeholder="e.g. 629 King St. W" />
 
                 <x-inputs.text type="text" id="city" name="city" label="City" placeholder="Toronto" />
@@ -61,7 +61,7 @@
                 <x-inputs.text-area id="company_description" name="company_description" label="Company Description"
                     placeholder="Company Description" rows="4" />
 
-                <x-inputs.text type="text" id="company_website" name="company_website" label="Company Website"
+                <x-inputs.text type="url" id="company_website" name="company_website" label="Company Website"
                     placeholder="Enter website" />
 
                 <x-inputs.text type="text" id="contact_phone" name="contact_phone" label="Contact Phone"
