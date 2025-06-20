@@ -5,7 +5,7 @@
         <div class="bg-blue-900 mx-auto p-8 rounded-lg shadow-md w-full md:max-w-3xl">
             <h2 class="text-4xl text-center font-bold mb-4">Create Job Listing</h2>
 
-            <form method="POST" action="/jobs" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('jobs.store') }}" enctype="multipart/form-data">
 
                 {{-- Job Info --}}
                 @csrf
@@ -46,11 +46,11 @@
                 <x-inputs.text type="text" id="address" name="address" label="Address"
                     placeholder="e.g. 629 King St. W" />
 
-                <x-inputs.text type="text" id="city" name="city" label="City" placeholder="Toronto" />
+                <x-inputs.text type="text" id="city" name="city" label="City" placeholder="e.g. Toronto" />
 
-                <x-inputs.text type="text" id="state" name="state" label="State" placeholder="ON" />
+                <x-inputs.text type="text" id="state" name="state" label="State" placeholder="e.g. ON" />
 
-                <x-inputs.text type="text" id="zipcode" name="zipcode" label="Zipcode" placeholder="M5V 0G9" />
+                <x-inputs.text type="text" id="zipcode" name="zipcode" label="Zipcode" placeholder="e.g. M5V 0G9" />
 
                 {{-- Company Info --}}
                 <h2 class="text-2xl font-bold mb-6 text-center text-blue-200">Company Info</h2>
