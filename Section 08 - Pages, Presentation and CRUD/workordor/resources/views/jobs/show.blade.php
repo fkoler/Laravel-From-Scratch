@@ -44,28 +44,33 @@
                             <strong>Site Location:</strong> {{ $job->city }}, {{ $job->state }}
                         </li>
 
-                        <li class="mb-2">
-                            <strong>Tags:</strong> {{ ucwords(str_replace(',', ', ', $job->tags)) }}
-                        </li>
+                        @if ($job->tags)
+                            <li class="mb-2">
+                                <strong>Tags:</strong> {{ ucwords(str_replace(',', ', ', $job->tags)) }}
+                            </li>
+                        @endif
+
                     </ul>
                 </div>
             </div>
 
             {{-- Job Details --}}
             <div class="container mx-auto p-4">
-                <h2 class="text-xl font-semibold mb-4">Job Details</h2>
+                @if ($job->requirements || $job->benefits)
+                    <h2 class="text-xl font-semibold mb-4">Job Details</h2>
 
-                <div class="rounded-lg shadow-md bg-blue-900 text-gray-400 p-4">
-                    <h3 class="text-lg font-semibold mb-2 text-white">
-                        Job Requirements
-                    </h3>
+                    <div class="rounded-lg shadow-md bg-blue-900 text-gray-400 p-4">
+                        <h3 class="text-lg font-semibold mb-2 text-white">
+                            Job Requirements
+                        </h3>
 
-                    <p>{{ $job->requirements }}</p>
+                        <p>{{ $job->requirements }}</p>
 
-                    <h3 class="text-lg font-semibold mt-4 mb-2 text-white">Benefits</h3>
+                        <h3 class="text-lg font-semibold mt-4 mb-2 text-white">Benefits</h3>
 
-                    <p>{{ $job->benefits }}</p>
-                </div>
+                        <p>{{ $job->benefits }}</p>
+                    </div>
+                @endif
 
                 <p class="my-5">
                     Put "Job Application" as the subject of your email
@@ -88,12 +93,16 @@
         <aside class="bg-blue-900 text-white rounded-lg shadow-md p-3">
             <h3 class="text-xl text-center mb-4 font-bold">Company Info</h3>
 
-            <img src="/images/{{ $job->company_logo }}" alt="{{ $job->company_name }}"
-                class="w-full rounded-lg mb-4 m-auto" />
+            @if ($job->company_logo)
+                <img src="/images/{{ $job->company_logo }}" alt="{{ $job->company_name }}"
+                    class="w-full rounded-lg mb-4 m-auto" />
+            @endif
 
-            <h4 class="text-lg font-bold">{{ $job->company_name }}</h4>
+            <h4 class="text-lg font-bold text-gray-300">{{ $job->company_name }}</h4>
 
-            <p class="text-gray-400 text-base my-3">{{ $job->company_description }}</p>
+            @if ($job->company_description)
+                <p class="text-gray-400 text-base my-3">{{ $job->company_description }}</p>
+            @endif
 
             <a href="{{ $job->company_website }}" target="_blank"
                 class="text-indigo-200 hover:text-indigo-300 shadow-md">Visit Website</a>
