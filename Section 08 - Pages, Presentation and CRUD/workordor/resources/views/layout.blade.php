@@ -13,7 +13,7 @@
     <title>{{ 'Wokordor | ' . ($title ?? 'Find and list Jobs') }}</title>
 </head>
 
-<body style="background-color: #0a0a0a; color: #EDEDEC; font-family: sans-serif">
+<body class="bg-[#0a0a0a] text-[#EDEDEC] font-sans">
     <x-header />
 
     @if (request()->is('/'))
@@ -34,7 +34,8 @@
 
         {{ $slot }}
     </main>
-    <script src="{{ asset('js/script.js') }}"></script>
+
+    {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
 </body>
 
 </html>
