@@ -13,20 +13,23 @@ use Illuminate\Contracts\Support\ValidatedData;
 class JobController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * @desc Show all job listings.
+     * @route GET /jobs
+     * 
+     * @return View
      */
     public function index(): View
     {
-        $sessionValue = session()->get('rammstein');
-        dd($sessionValue);
-
         $jobs = Job::all();
 
         return view('jobs.index')->with('jobs', $jobs);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @desc Show create job form.
+     * @route GET /jobs/create
+     * 
+     * @return View
      */
     public function create(): View
     {
@@ -34,7 +37,10 @@ class JobController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @desc Save job to database.
+     * @route POST /jobs
+     * 
+     * @return RedirectResponse
      */
     public function store(Request $request): RedirectResponse
     {
@@ -81,7 +87,10 @@ class JobController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * @desc Display a single job listing.
+     * @route GET /jobs/{$id}
+     * 
+     * @return View
      */
     public function show(Job $job): View
     {
@@ -89,7 +98,10 @@ class JobController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @desc Show edit job form.
+     * @route GET /jobs/{$id}/edit
+     * 
+     * @return View
      */
     public function edit(Job $job): View
     {
@@ -97,7 +109,10 @@ class JobController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * @desc Update a job listing.
+     * @route PUT /jobs/{$id}
+     * 
+     * @return RedirectResponse
      */
     public function update(Request $request, Job $job): RedirectResponse
     {
@@ -122,7 +137,7 @@ class JobController extends Controller
             'company_logo' => 'nullable|image|mimes:jpg,jpeg,png,bmp,gif|max:2048',
         ]);
 
-        // Chack for image
+        // Check for image
         if ($request->hasFile('company_logo')) {
             // Delete old logo
             Storage::delete('public/logos/' . basename($job->company_logo));
@@ -141,7 +156,10 @@ class JobController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @desc Delete a job listing.
+     * @route DELETE /jobs/{$id}
+     * 
+     * @return RedirectResponse
      */
     public function destroy(Job $job): RedirectResponse
     {
