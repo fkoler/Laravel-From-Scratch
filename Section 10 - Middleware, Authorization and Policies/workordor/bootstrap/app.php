@@ -16,7 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
             '/submit',
         ]);
 
-        $middleware->append(LogRequest::class);
+        // $middleware->append(LogRequest::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
