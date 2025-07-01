@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\Job;
 use Illuminate\Contracts\Support\ValidatedData;
+use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
@@ -68,8 +69,8 @@ class JobController extends Controller
             'company_logo' => 'nullable|image|mimes:jpg,jpeg,png,bmp,gif|max:2048',
         ]);
 
-        // Set user_id to the authenticated user
-        $validatedData['user_id'] = auth()->user()->id;
+        // Set user_id to the authenticated user        
+        $validatedData['user_id'] = Auth::user()->id;
 
         // Chack for image
         if ($request->hasFile('company_logo')) {
