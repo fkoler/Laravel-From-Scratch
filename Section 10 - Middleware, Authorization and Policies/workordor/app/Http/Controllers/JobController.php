@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Job;
 use Illuminate\Contracts\Support\ValidatedData;
@@ -31,8 +32,12 @@ class JobController extends Controller
      * 
      * @return View
      */
-    public function create(): View
+    public function create()
     {
+        if (!Auth::check()) {
+            return redirect()->route('login');
+        }
+
         return view('jobs.create');
     }
 
