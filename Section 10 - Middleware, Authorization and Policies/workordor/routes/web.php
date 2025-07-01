@@ -15,11 +15,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::resource('jobs', JobController::class)->middleware('auth')->only(['create', 'edit', 'update', 'destroy']);
 Route::resource('jobs', JobController::class)->except(['create', 'edit', 'update', 'destroy']);
 
-Route::get('/register', [RegisterController::class, 'register'])->name('register')->middleware(LogRequest::class);
-Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+Route::middleware('guest')->group(function () {
+    Route::get('/register', [RegisterController::class, 'register'])->name('register')->middleware(LogRequest::class);
+    Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
-Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware(LogRequest::class);
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
+    Route::get('/login', [LoginController::class, 'login'])->name('login')->middleware(LogRequest::class);
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
+});
 
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
