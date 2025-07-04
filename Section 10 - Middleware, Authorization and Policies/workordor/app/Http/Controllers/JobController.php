@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Models\Job;
-use Illuminate\Contracts\Support\ValidatedData;
-use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * @desc Show all job listings.
      * @route GET /jobs
@@ -117,6 +119,9 @@ class JobController extends Controller
      */
     public function update(Request $request, Job $job): RedirectResponse
     {
+        // Check if user is authorized
+        $this->authorize('update', $job);
+
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -164,6 +169,9 @@ class JobController extends Controller
      */
     public function destroy(Job $job): RedirectResponse
     {
+        // Check if user is authorized
+        $this->authorize('delete', $job);
+
         // If logo exists, than delete it
         if ($job->company_logo) {
             Storage::delete('public/logos/' . $job->company_logo);

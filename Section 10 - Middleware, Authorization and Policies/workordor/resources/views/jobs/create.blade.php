@@ -50,7 +50,8 @@
 
                 <x-inputs.text type="text" id="state" name="state" label="State" placeholder="e.g. ON" />
 
-                <x-inputs.text type="text" id="zipcode" name="zipcode" label="Zipcode" placeholder="e.g. M5V 0G9" />
+                <x-inputs.text type="text" id="zipcode" name="zipcode" label="Zipcode"
+                    placeholder="e.g. M5V 0G9" />
 
                 {{-- Company Info --}}
                 <h2 class="text-2xl font-bold mb-6 text-center text-blue-200">Company Info</h2>
