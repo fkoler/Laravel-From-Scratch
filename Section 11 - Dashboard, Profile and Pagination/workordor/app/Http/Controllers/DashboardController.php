@@ -10,7 +10,7 @@ use Illuminate\View\View;
 class DashboardController extends Controller
 {
     /**
-     * @desc Show all users job listings
+     * @desc Show all users job listings.
      * @route GET /dashboard
      * 
      * @return View
