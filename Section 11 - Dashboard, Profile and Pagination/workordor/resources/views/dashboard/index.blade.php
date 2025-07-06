@@ -1,12 +1,12 @@
 <x-layout>
     <section class="flex flex-col md:flex-row gap-4">
         {{-- Profile Info Form --}}
-        <div class="p-8 w-full">
+        <div class="p-8 rounded-xl border border-gray-900 w-full">
             <h3 class="text-3xl text-center font-bold mb-4">
                 Profile Info
             </h3>
 
-            <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
+            <form id="profileForm" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <x-inputs.text id="name" name="name" label="Name" value="{{ $user->name }}" />
@@ -20,7 +20,7 @@
             </form>
         </div>
         {{-- Job Listings --}}
-        <div class="p-8 w-full">
+        <div class="p-8 rounded-xl border border-gray-900 w-full">
             <h3 class="text-3xl text-center font-bold mb-4">
                 My Job Listings
             </h3>
@@ -56,4 +56,38 @@
     </section>
 
     <x-bottom-banner />
+
+    <script>
+        const form = document.getElementById('profileForm');
+
+        const originalData = {
+            name: @json($user->name),
+            email: @json($user->email),
+        };
+
+        form.addEventListener('submit', function(e) {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            const nameChanged = name !== originalData.name;
+            const emailChanged = email !== originalData.email;
+
+            let confirmMessage = '';
+
+            if (nameChanged && emailChanged) {
+                confirmMessage = 'Are you sure you want to change the name and the email address?';
+            } else if (nameChanged) {
+                confirmMessage = 'Are you sure you want to change the name?';
+            } else if (emailChanged) {
+                confirmMessage = 'Are you sure you want to change the email address?';
+            }
+
+            if (confirmMessage) {
+                const confirmed = confirm(confirmMessage);
+                if (!confirmed) {
+                    e.preventDefault();
+                }
+            }
+        });
+    </script>
 </x-layout>
