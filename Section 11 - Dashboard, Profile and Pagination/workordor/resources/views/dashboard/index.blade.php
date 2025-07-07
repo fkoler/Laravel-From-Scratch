@@ -6,6 +6,13 @@
                 Profile Info
             </h3>
 
+            @if ($user->avatar)
+                <div class="mt-2 flex justify-center">
+                    <img src="{{ asset('storage/' . $user->avatar) }}" alt="{{ $user->name }}"
+                        class="w-32 h-32 object-cover rounded-full">
+                </div>
+            @endif
+
             <form id="profileForm" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
