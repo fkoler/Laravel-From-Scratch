@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
     ];
 
     /**
@@ -48,7 +49,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Relate to job listing
+     * Relate to job listing.
      *
      * @return HasMany
      */

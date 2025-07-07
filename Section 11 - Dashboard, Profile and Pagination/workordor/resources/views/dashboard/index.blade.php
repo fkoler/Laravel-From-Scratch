@@ -13,6 +13,8 @@
                 <x-inputs.text id="email" name="email" label="Email Address" type="email"
                     value="{{ $user->email }}" />
 
+                <x-inputs.file id="avatar" name="avatar" label="Upload Avatar" />
+
                 <button type="submit"
                     class="w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded focus:outline-none cursor-pointer">
                     Save
