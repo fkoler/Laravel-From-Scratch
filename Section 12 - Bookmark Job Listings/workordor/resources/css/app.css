@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@source "../views";
+
+/* Chrome, Safari, Edge */
+#salary::-webkit-outer-spin-button,
+#salary::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+#salary {
+    -moz-appearance: textfield;
+}
