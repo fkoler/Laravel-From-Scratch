@@ -66,34 +66,32 @@
 
     <x-bottom-banner />
 
+    {{-- Custom confirm --}}
     <script>
         const form = document.getElementById('profileForm');
 
-        const originalData = {
+        const original = {
             name: @json($user->name),
             email: @json($user->email),
         };
 
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', e => {
+            const changes = [];
+
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const avatar = document.getElementById('avatar').files.length > 0;
 
-            const nameChanged = name !== originalData.name;
-            const emailChanged = email !== originalData.email;
+            if (name !== original.name) changes.push("name");
+            if (email !== original.email) changes.push("email address");
+            if (avatar) changes.push("avatar");
 
-            let confirmMessage = '';
+            if (changes.length) {
+                const formatted = changes.length === 1 ?
+                    changes[0] :
+                    changes.slice(0, -1).join(', ') + ' and ' + changes.at(-1);
 
-            if (nameChanged && emailChanged) {
-                confirmMessage = 'Are you sure you want to change the name and the email address?';
-            } else if (nameChanged) {
-                confirmMessage = 'Are you sure you want to change the name?';
-            } else if (emailChanged) {
-                confirmMessage = 'Are you sure you want to change the email address?';
-            }
-
-            if (confirmMessage) {
-                const confirmed = confirm(confirmMessage);
-                if (!confirmed) {
+                if (!confirm(`Are you sure you want to change ${formatted}?`)) {
                     e.preventDefault();
                 }
             }
