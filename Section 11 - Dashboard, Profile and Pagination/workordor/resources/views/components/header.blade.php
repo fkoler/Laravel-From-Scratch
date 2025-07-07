@@ -41,7 +41,7 @@
         @auth
             <x-nav-link url="/jobs/saved" :active="request()->is('jobs/saved')" :mobile="true">Saved Jobs</x-nav-link>
             <x-nav-link url="/dashboard" :active="request()->is('dashboard')" :mobile="true">Dashboard</x-nav-link>
-            <x-logout-button />
+            <x-logout-button class="block px-4 py-2 hover:bg-blue-700 w-full text-left" />
             <x-button-link url="/jobs/create" icon="edit" :block="true">Create Job</x-button-link>
         @else
             <x-nav-link url="/login" :active="request()->is('login')" :mobile="true">Login</x-nav-link>
