@@ -10,3 +10,5 @@
     {{-- Pagination links --}}
     {{ $jobs->links() }}
 </x-layout>
+
+<x-bottom-banner />
