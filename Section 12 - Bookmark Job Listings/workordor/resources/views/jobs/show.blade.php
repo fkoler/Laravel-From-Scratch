@@ -112,9 +112,21 @@
             <a href="{{ $job->company_website }}" target="_blank"
                 class="text-indigo-200 hover:text-indigo-300 shadow-md">Visit Website</a>
 
-            <a href=""
-                class="mt-10 bg-blue-500 hover:bg-blue-600 text-white font-semibold w-full py-2 px-4 rounded-full flex items-center justify-center">
-                <i class="fas fa-bookmark mr-3"></i>Bookmark Listing</a>
+            {{-- Bookmark Button --}}
+            @guest
+                <p
+                    class="mt-10 bg-gray-600 hover:bg-gray-500 text-gray-800 hover:text-gray-900 font-bold w-full py-2 px-4 cursor-not-allowed rounded-full text-center">
+                    <i class="fas fa-info-circle mr-1"></i> You must be logged in to bookmark the job
+                </p>
+            @else
+                <form method="POST" action="{{ route('bookmarks.store', $job->id) }}" class="mt-10">
+                    @csrf
+                    <button
+                        class="bg-blue-500 hover:bg-blue-600 text-gray-100 font-semibold w-full py-2 px-4 cursor-pointer rounded-full flex items-center justify-center">
+                        <i class="fas fa-bookmark mr-1"></i> Bookmark Job
+                    </button>
+                </form>
+            @endguest
         </aside>
     </div>
 </x-layout>

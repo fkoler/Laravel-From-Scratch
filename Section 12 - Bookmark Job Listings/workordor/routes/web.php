@@ -38,4 +38,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/bookmarks/{job}', [BookmarkController::class, 'destroy'])->name('bookmarks.destroy');
 });
 
+
+
 // php artisan route:list
