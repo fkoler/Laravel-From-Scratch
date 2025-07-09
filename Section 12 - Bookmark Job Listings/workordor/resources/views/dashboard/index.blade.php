@@ -59,7 +59,7 @@
                     </div>
                 </div>
             @empty
-                <p class="text-gray-700">You have not job listings</p>
+                <p class="text-gray-700 text-center">You have not job listings</p>
             @endforelse
         </div>
     </section>
