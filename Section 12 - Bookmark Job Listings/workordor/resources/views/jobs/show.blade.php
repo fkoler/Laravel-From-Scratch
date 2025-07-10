@@ -115,16 +115,30 @@
             {{-- Bookmark Button --}}
             @guest
                 <p
-                    class="mt-10 bg-gray-600 hover:bg-gray-500 text-gray-800 hover:text-gray-900 font-bold w-full py-2 px-4 cursor-not-allowed rounded-full text-center">
+                    class="opacity-75 hover:opacity-100 mt-10 bg-gray-500 text-gray-900 font-bold w-full py-2 px-4 cursor-not-allowed rounded-full text-center">
                     <i class="fas fa-info-circle mr-1"></i> You must be logged in to bookmark the job
                 </p>
             @else
-                <form method="POST" action="{{ route('bookmarks.store', $job->id) }}" class="mt-10">
+                @php
+                    $isBookmarked = auth()->user()->bookmarkedJobs()->where('job_id', $job->id)->exists();
+                @endphp
+
+                <form method="POST"
+                    action="{{ $isBookmarked ? route('bookmarks.destroy', $job->id) : route('bookmarks.store', $job->id) }}"
+                    class="mt-10">
                     @csrf
-                    <button
-                        class="bg-blue-500 hover:bg-blue-600 text-gray-100 font-semibold w-full py-2 px-4 cursor-pointer rounded-full flex items-center justify-center">
-                        <i class="fas fa-bookmark mr-1"></i> Bookmark Job
-                    </button>
+                    @if ($isBookmarked)
+                        @method('DELETE')
+                        <button
+                            class="bg-red-500 hover:bg-red-600 text-gray-100 font-semibold w-full py-2 px-4 cursor-pointer rounded-full flex items-center justify-center">
+                            <i class="fas fa-bookmark mr-1"></i> Remove Bookmark
+                        </button>
+                    @else
+                        <button
+                            class="bg-blue-500 hover:bg-blue-600 text-gray-100 font-semibold w-full py-2 px-4 cursor-pointer rounded-full flex items-center justify-center">
+                            <i class="fas fa-bookmark mr-1"></i> Bookmark Job
+                        </button>
+                    @endif
                 </form>
             @endguest
         </aside>
