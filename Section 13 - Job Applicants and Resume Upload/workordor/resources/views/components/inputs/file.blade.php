@@ -1,11 +1,11 @@
-@props(['id', 'name', 'label' => null])
+@props(['id', 'name', 'label' => null, 'required' => false])
 
 <div class="mb-4">
     @if ($label)
         <label class="block text-gray-300" for="{{ $id }}">{{ $label }}</label>
     @endif
 
-    <input id="{{ $id }}" type="file" name="{{ $name }}"
+    <input id="{{ $id }}" name="{{ $name }}" type="file" {{ $required ? 'required' : '' }}
         class="text-gray-400 w-full px-4 py-2 border rounded focus:outline-none cursor-pointer
             @error($name)
                 border-red-500                            

@@ -82,6 +82,7 @@
                     and attach your resume.
                 </p>
 
+                {{-- Modal --}}
                 <div x-data="{ open: false }">
                     <button @click="open = true"
                         class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-200 hover:bg-indigo-300">
@@ -90,12 +91,33 @@
 
                     <div x-show="open"
                         class="fixed inset-0 flex items-center justify-center bg-[#0a0a0a]/50 text-[#EDEDEC]">
-                        <div class="bg-blue-900 text-gray-400 p-6 rounded-lg shadow-md w-full max-w-md">
+                        <div @click.away="open = false"
+                            class="bg-blue-900 text-gray-400 p-6 rounded-lg shadow-md w-full max-w-md z-40">
                             <h3 class="text-lg font-semibold mb-4">
                                 Apply for {{ $job->title }}
                             </h3>
-                        </div>
 
+                            <form enctype="multipart/form-data">
+                                @csrf
+                                <x-inputs.text id="full_name" name="full_name" label="Full Name" :required="true" />
+                                <x-inputs.text id="contact_phone" name="contact_phone" label="Contact Phone" />
+                                <x-inputs.text id="contact_email" name="contact_email" label="Contact Email"
+                                    :required="true" />
+                                <x-inputs.text-area id="message" name="message" label="Message" />
+                                <x-inputs.text id="location" name="location" label="Location" />
+                                <x-inputs.file id="resume" name="resume" label="Upload Your Resume (*.pdf)"
+                                    :required="true" />
+
+                                <button type="submit"
+                                    class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md cursor-pointer">
+                                    Submit Application
+                                </button>
+                                <button @click="open = false"
+                                    class="px-4 py-2 bg-gray-700 hover:bg-gray-800 text-gray-200 rounded-md cursor-pointer">
+                                    Cancel
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
