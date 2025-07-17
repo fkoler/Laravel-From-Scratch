@@ -82,10 +82,22 @@
                     and attach your resume.
                 </p>
 
-                <a href="mailto:{{ $job->contact_email }}"
-                    class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-200 hover:bg-indigo-300">
-                    Apply Now
-                </a>
+                <div x-data="{ open: false }">
+                    <button @click="open = true"
+                        class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-200 hover:bg-indigo-300">
+                        Apply Now
+                    </button>
+
+                    <div x-show="open"
+                        class="fixed inset-0 flex items-center justify-center bg-[#0a0a0a]/50 text-[#EDEDEC]">
+                        <div class="bg-blue-900 text-gray-400 p-6 rounded-lg shadow-md w-full max-w-md">
+                            <h3 class="text-lg font-semibold mb-4">
+                                Apply for {{ $job->title }}
+                            </h3>
+                        </div>
+
+                    </div>
+                </div>
             </div>
 
             {{-- Map --}}
