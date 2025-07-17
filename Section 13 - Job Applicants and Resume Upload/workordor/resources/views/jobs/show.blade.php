@@ -90,7 +90,7 @@
                             Apply Now
                         </button>
 
-                        <div x-show="open"
+                        <div x-cloak x-show="open"
                             class="fixed inset-0 flex items-center justify-center bg-[#0a0a0a]/50 text-[#EDEDEC]">
                             <div @click.away="open = false"
                                 class="bg-blue-900 text-gray-400 p-6 rounded-lg shadow-md w-full max-w-md z-40">
@@ -122,14 +122,14 @@
                         </div>
                     </div>
                 @else
-                    <p class="rounded-lg shadow-md bg-blue-900 text-gray-400 p-4 my-6">
+                    <p class="rounded-lg shadow-md bg-blue-900 text-gray-400 p-4 mt-6">
                         <i class="fas fa-info-circle mr-1"></i> You must be logged in to apply for the job
                     </p>
                 @endauth
             </div>
 
             {{-- Map --}}
-            <div class="bg-blue-900 p-6 rounded-lg shadow-md mt-6">
+            <div class="bg-blue-900 p-6 rounded-lg shadow-md mt-4">
                 <div id="map"></div>
             </div>
         </section>
