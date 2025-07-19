@@ -90,7 +90,7 @@
                             Apply Now
                         </button>
 
-                        <div x-cloak x-show="open"
+                        <div x-cloak x-show="open" style="display: none"
                             class="fixed inset-0 flex items-center justify-center bg-[#0a0a0a]/50 text-[#EDEDEC]">
                             <div @click.away="open = false"
                                 class="bg-blue-900 text-gray-400 p-6 rounded-lg shadow-md w-full max-w-md z-40">
@@ -98,7 +98,8 @@
                                     Apply for {{ $job->title }}
                                 </h3>
 
-                                <form enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('applicant.store', $job->id) }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <x-inputs.text id="full_name" name="full_name" label="Full Name" :required="true" />
                                     <x-inputs.text id="contact_phone" name="contact_phone" label="Contact Phone" />
