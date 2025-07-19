@@ -28,62 +28,69 @@
                 </button>
             </form>
         </div>
+
         {{-- Job Listings --}}
         <div class="p-8 rounded-xl border border-gray-900 w-full">
-            <h3 class="text-3xl text-center font-bold mb-4">
+            <h3 class="text-3xl text-center font-bold mb-8">
                 My Job Listings
             </h3>
 
             @forelse($jobs as $job)
-                <div class="flex justify-between items-center">
-                    <div>
-                        <h3 class="text-xl font-semibold">{{ $job->title }}</h3>
-
-                        <p class="text-gray-500 mt-1">{{ $job->job_type }}</p>
-                    </div>
-
-                    <div class="flex space-x-3">
-                        <a href="{{ route('jobs.edit', $job->id) }}"
-                            class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</a>
-                        {{-- Delete Form --}}
-                        <form method="POST" action="{{ route('jobs.destroy', $job->id) }}?from=dashboard"
-                            onsubmit="return confirm('Are you sure that you want to delete this job?')">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit"
-                                class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded cursor-pointer">
-                                Delete
-                            </button>
-                        </form>
-                        {{-- End Delete Form --}}
-                    </div>
-                </div>
-                {{-- Applicants --}}
-                <div class="mt-4">
-                    <h4 class="text-lg font-semibold mb-2">Applicants</h4>
-
-                    @forelse ($job->applicants as $applicant)
-                        <div class="py-2">
-                            <p class="text-blue-400">
-                                <strong>Name: </strong> {{ $applicant->full_name }}
-                            </p>
-                            <p class="text-blue-400">
-                                <strong>Phone: </strong> {{ $applicant->contact_phone }}
-                            </p>
-                            <p class="text-blue-400">
-                                <strong>Email: </strong> {{ $applicant->contact_email }}
-                            </p>
-                            <p class="text-blue-400">
-                                <strong>Message: </strong> {{ $applicant->message }}
-                            </p>
+                <div class="mt-4 p-4 rounded-lg bg-gray-900 w-full">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="text-xl font-semibold">{{ $job->title }}</h3>
+                            <p class="text-gray-500 mt-1">{{ $job->job_type }}</p>
                         </div>
-                    @empty
-                        <p class="text-gray-700 mb-5">No applicants for this job</p>
-                    @endforelse
+
+                        <div class="flex space-x-3">
+                            <a href="{{ route('jobs.edit', $job->id) }}"
+                                class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</a>
+                            <form method="POST" action="{{ route('jobs.destroy', $job->id) }}?from=dashboard"
+                                onsubmit="return confirm('Are you sure that you want to delete this job?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded cursor-pointer">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    {{-- Applicants --}}
+                    <div class="mt-4">
+                        <h4 class="text-lg font-semibold mb-2">Applicants</h4>
+
+                        @forelse ($job->applicants as $applicant)
+                            <div class="py-2">
+                                <p class="text-blue-400">
+                                    <strong>Name: </strong> {{ $applicant->full_name }}
+                                </p>
+                                <p class="text-blue-400">
+                                    <strong>Phone: </strong> {{ $applicant->contact_phone }}
+                                </p>
+                                <p class="text-blue-400">
+                                    <strong>Email: </strong> {{ $applicant->contact_email }}
+                                </p>
+                                <p class="text-blue-400">
+                                    <strong>Message: </strong> {{ $applicant->message }}
+                                </p>
+                                <p class="text-blue-400 hover:text-blue-500 hover:underline mt-1">
+                                    <a href="{{ asset('storage/' . $applicant->resume_path) }}" download>
+                                        <i class="fas fa-download mr-1"></i> Download Resume
+                                    </a>
+                                </p>
+                            </div>
+                        @empty
+                            <p class="text-gray-500 mb-5">No applicants for this job</p>
+                        @endforelse
+                    </div>
                 </div>
             @empty
-                <p class="text-gray-700 text-center">You have not job listings</p>
+                <p class="text-gray-500 text-center">You don't have any job listings</p>
             @endforelse
+
         </div>
     </section>
 
