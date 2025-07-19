@@ -39,7 +39,7 @@
                     <div>
                         <h3 class="text-xl font-semibold">{{ $job->title }}</h3>
 
-                        <p class="text-gray-500">{{ $job->job_type }}</p>
+                        <p class="text-gray-500 mt-1">{{ $job->job_type }}</p>
                     </div>
 
                     <div class="flex space-x-3">
@@ -57,6 +57,29 @@
                         </form>
                         {{-- End Delete Form --}}
                     </div>
+                </div>
+                {{-- Applicants --}}
+                <div class="mt-4">
+                    <h4 class="text-lg font-semibold mb-2">Applicants</h4>
+
+                    @forelse ($job->applicants as $applicant)
+                        <div class="py-2">
+                            <p class="text-blue-400">
+                                <strong>Name: </strong> {{ $applicant->full_name }}
+                            </p>
+                            <p class="text-blue-400">
+                                <strong>Phone: </strong> {{ $applicant->contact_phone }}
+                            </p>
+                            <p class="text-blue-400">
+                                <strong>Email: </strong> {{ $applicant->contact_email }}
+                            </p>
+                            <p class="text-blue-400">
+                                <strong>Message: </strong> {{ $applicant->message }}
+                            </p>
+                        </div>
+                    @empty
+                        <p class="text-gray-700 mb-5">No applicants for this job</p>
+                    @endforelse
                 </div>
             @empty
                 <p class="text-gray-700 text-center">You have not job listings</p>
