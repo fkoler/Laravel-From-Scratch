@@ -1,5 +1,6 @@
 <x-layout>
     <section class="flex flex-col md:flex-row gap-4 pb-2">
+
         {{-- Profile Info Form --}}
         <div class="p-8 rounded-xl border border-gray-900 w-full">
             <h3 class="text-3xl text-center font-bold mb-4">
@@ -47,7 +48,7 @@
                             <a href="{{ route('jobs.edit', $job->id) }}"
                                 class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">Edit</a>
                             <form method="POST" action="{{ route('jobs.destroy', $job->id) }}?from=dashboard"
-                                onsubmit="return confirm('Are you sure that you want to delete this job?')">
+                                onsubmit="return confirm('Are you sure that you want to delete the job?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"
@@ -67,20 +68,35 @@
                                 <p class="text-blue-400">
                                     <strong>Name: </strong> {{ $applicant->full_name }}
                                 </p>
+
                                 <p class="text-blue-400">
                                     <strong>Phone: </strong> {{ $applicant->contact_phone }}
                                 </p>
+
                                 <p class="text-blue-400">
                                     <strong>Email: </strong> {{ $applicant->contact_email }}
                                 </p>
+
                                 <p class="text-blue-400">
                                     <strong>Message: </strong> {{ $applicant->message }}
                                 </p>
-                                <p class="text-blue-400 hover:text-blue-500 hover:underline mt-1">
+
+                                <p class="text-blue-400 hover:text-blue-500 hover:underline mt-2 text-sm">
                                     <a href="{{ asset('storage/' . $applicant->resume_path) }}" download>
                                         <i class="fas fa-download mr-1"></i> Download Resume
                                     </a>
                                 </p>
+
+                                {{-- Delete Applicant --}}
+                                <form method="POST" action="{{ route('applicant.destroy', $applicant->id) }}"
+                                    onsubmit="return confirm('Are you sure that you want to delete the applicant?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="text-red-500 hover:text-red-600 text-sm mt-2 cursor-pointer">
+                                        <i class="fas fa-trash mr-1.5"></i> Delete Applicant
+                                    </button>
+                                </form>
                             </div>
                         @empty
                             <p class="text-gray-500 mb-5">No applicants for this job</p>
@@ -90,7 +106,6 @@
             @empty
                 <p class="text-gray-500 text-center">You don't have any job listings</p>
             @endforelse
-
         </div>
     </section>
 

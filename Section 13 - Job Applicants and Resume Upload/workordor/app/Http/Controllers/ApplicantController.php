@@ -12,7 +12,7 @@ use App\Models\Applicant;
 class ApplicantController extends Controller
 {
     /**
-     * @desc Store new job application
+     * @desc Store new job application.
      * @route POST /jobs/{job}/apply
      * 
      * @return RedirectResponse
@@ -42,5 +42,19 @@ class ApplicantController extends Controller
         $application->save();
 
         return redirect()->back()->with('success', 'Your application has been submitted');
+    }
+
+    /**
+     * @desc Delete job applicant.
+     * @route DELETE /applicants/{applicant}
+     * 
+     * @return RedirectResponse
+     */
+    public function destroy($id): RedirectResponse
+    {
+        $applicant = Applicant::findOrFail($id);
+        $applicant->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Applicant deleted successfully');
     }
 }
