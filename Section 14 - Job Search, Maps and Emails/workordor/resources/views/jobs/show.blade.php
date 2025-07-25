@@ -5,7 +5,7 @@
             <div class="rounded-lg shadow-md bg-blue-900 text-white p-3">
                 <div class="flex justify-between items-center">
                     <a class="block p-4 text-white" href="{{ route('jobs.index') }}">
-                        <i class="fa fa-arrow-alt-circle-left"></i>
+                        <i class="fa fa-arrow-alt-circle-left mr-1"></i>
                         Back To Listings
                     </a>
 

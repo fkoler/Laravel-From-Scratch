@@ -3,6 +3,14 @@
         <x-search />
     </div>
 
+    {{-- Back button --}}
+    @if (request()->has('keywords') || request()->has('location'))
+        <a href="{{ route('jobs.index') }}" class="block py-4 text-white"">
+            <i class="fa fa-arrow-alt-circle-left mr-1"></i>
+            Back To Listings
+        </a>
+    @endif
+
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         @forelse ($jobs as $job)
             <x-job-card :job="$job" />
