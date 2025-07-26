@@ -84,7 +84,7 @@
                     </p>
 
                     {{-- Modal --}}
-                    <div x-data="{ open: false }">
+                    <div x-data="{ open: false }" id="applicant-form">
                         <button @click="open = true"
                             class="block w-full text-center px-5 py-2.5 shadow-sm rounded border text-base font-medium cursor-pointer text-indigo-700 bg-indigo-200 hover:bg-indigo-300">
                             Apply Now
@@ -130,8 +130,8 @@
             </div>
 
             {{-- Map --}}
-            <div class="bg-blue-900 p-6 rounded-lg shadow-md mt-4">
-                <div id="map"></div>
+            <div class="bg-blue-900 p-6 rounded-xl shadow-md mt-4">
+                <div id="map" class="rounded-sm"></div>
             </div>
         </section>
 
@@ -185,3 +185,46 @@
         </aside>
     </div>
 </x-layout>
+
+<link href="https://api.mapbox.com/mapbox-gl-js/v3.13.0/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.13.0/mapbox-gl.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Mapbox access token
+        mapboxgl.accessToken = "{{ env('MAPBOX_API_KEY') }}";
+
+        // Initialize the map
+        const map = new mapboxgl.Map({
+            container: 'map', // ID of the container element
+            style: 'mapbox://styles/mapbox/streets-v12', // Map style
+            center: [-74.5, 40], // Default center
+            zoom: 9 // Default zoom level
+        });
+
+        // Get address from Laravel view
+        const address = `{{ $job->city }}, {{ $job->state }}`;
+
+        // Geocode the address
+        const geocodeUrl =
+            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapboxgl.accessToken}`;
+
+        fetch(geocodeUrl)
+            .then(response => response.json())
+            .then(data => {
+                const feature = data.features?.[0];
+                if (!feature) return;
+
+                const [lng, lat] = feature.center;
+
+                // Center the map and add a marker
+                map.setCenter([lng, lat]);
+                map.setZoom(14);
+
+                new mapboxgl.Marker({
+                    color: "#2b7fff" // Marker color
+                }).setLngLat([lng, lat]).addTo(map);
+            })
+            .catch(err => console.error('Geocoding error:', err));
+    });
+</script>
