@@ -191,7 +191,7 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Mapbox access token
+        // Set Mapbox token
         mapboxgl.accessToken = "{{ env('MAPBOX_API_KEY') }}";
 
         // Initialize the map
@@ -206,24 +206,22 @@
         const address = `{{ $job->city }}, {{ $job->state }}`;
 
         // Geocode the address
-        const geocodeUrl =
-            `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?access_token=${mapboxgl.accessToken}`;
+        const geocodeUrl = `/geocode?address=${encodeURIComponent(address)}`;
 
         fetch(geocodeUrl)
             .then(response => response.json())
-            .then(data => {
-                const feature = data.features?.[0];
-                if (!feature) return;
+            .then((data) => {
+                if (data.features.length > 0) {
+                    const [lng, lat] = data.features[0]?.center;
 
-                const [lng, lat] = feature.center;
+                    // Center the map and add a marker
+                    map.setCenter([lng, lat]);
+                    map.setZoom(14);
 
-                // Center the map and add a marker
-                map.setCenter([lng, lat]);
-                map.setZoom(14);
-
-                new mapboxgl.Marker({
-                    color: "#2b7fff" // Marker color
-                }).setLngLat([lng, lat]).addTo(map);
+                    new mapboxgl.Marker({
+                        color: "#2b7fff" // Marker color
+                    }).setLngLat([lng, lat]).addTo(map);
+                }
             })
             .catch(err => console.error('Geocoding error:', err));
     });
